@@ -26,10 +26,10 @@ export default function FloatingWhatsApp() {
           alt="WhatsApp Heaven Seeds Academy"
           fill
           sizes="82px"
-          priority
+          loading="lazy"
           className="object-contain drop-shadow-[0_18px_35px_rgba(24,53,40,0.28)]"
-        />
-      </span>
+      />
+     </span>
     </Link>
   );
 }
