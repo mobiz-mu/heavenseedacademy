@@ -148,7 +148,7 @@ const testimonials = [
   },
 ];
 
-const marqueeItems = [...testimonials, ...testimonials];
+const marqueeItems = [...testimonials.slice(0, 10), ...testimonials.slice(0, 6)];
 
 function RatingStars({ rating }: { rating: number }) {
   const fullStars = Math.floor(rating);

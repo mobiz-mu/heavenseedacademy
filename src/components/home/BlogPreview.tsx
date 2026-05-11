@@ -68,7 +68,7 @@ const posts = [
   },
 ];
 
-const loopPosts = [...posts, ...posts];
+const loopPosts = [...posts, ...posts.slice(0, 5)];
 
 export default function BlogPreview() {
   return (

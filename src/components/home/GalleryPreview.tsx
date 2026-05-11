@@ -55,7 +55,7 @@ const galleryImages = [
   },
 ];
 
-const loopImages = [...galleryImages, ...galleryImages];
+const loopImages = [...galleryImages, ...galleryImages.slice(0, 5)];
 
 export default function GalleryPreview() {
   return (
