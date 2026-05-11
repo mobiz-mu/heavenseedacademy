@@ -1,15 +1,16 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
-import "./globals.css";
+import PreloadResources from "@/components/layout/PreloadResources";
 import { siteConfig } from "@/lib/seo/site";
 import {
   localBusinessSchema,
   schoolSchema,
   websiteSchema,
 } from "@/lib/seo/schema";
+import "./globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -17,7 +18,7 @@ const openSans = Open_Sans({
   display: "swap",
 });
 
-const siteUrl = "https://heavenseedsacademy.com";
+const siteUrl = siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -66,8 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Heaven Seeds Academy | Pre-Primary School in Mauritius",
-    description:
-      "A warm, safe and nurturing pre-primary school in Mauritius.",
+    description: "A warm, safe and nurturing pre-primary school in Mauritius.",
     images: ["/images/og/heaven-seeds-og.jpg"],
   },
   icons: {
@@ -86,8 +86,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -99,17 +97,21 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${openSans.variable} scroll-smooth`}
     >
+      <head>
+        <PreloadResources />
+      </head>
+
       <body className="min-h-screen bg-white text-[#183528] antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-          schoolSchema,
-          websiteSchema,
-          localBusinessSchema,
-       ]),
-     }}
-   />
+            __html: JSON.stringify([
+              schoolSchema,
+              websiteSchema,
+              localBusinessSchema,
+            ]),
+          }}
+        />
 
         <Header />
 

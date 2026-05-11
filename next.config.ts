@@ -6,6 +6,29 @@ const nextConfig: NextConfig = {
     qualities: [60, 70, 75, 80],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+
+  async headers() {
+    return [
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/Video/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

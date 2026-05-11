@@ -128,6 +128,8 @@ export default function BlogPreview() {
                   alt={post.title}
                   fill
                   sizes="(max-width: 640px) 285px, 330px"
+                  loading="lazy"
+                  quality={70}
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
 

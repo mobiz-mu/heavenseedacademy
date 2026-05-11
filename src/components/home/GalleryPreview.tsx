@@ -117,6 +117,8 @@ export default function GalleryPreview() {
                 alt={image.alt}
                 fill
                 sizes="(max-width: 640px) 282px, (max-width: 1024px) 370px, 430px"
+                loading="lazy"
+                quality={70}
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
 

@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -21,13 +21,12 @@ import { pageSeo } from "@/lib/seo/site";
 
 export const metadata = createMetadata(pageSeo.admissions);
 
-
 const admissionSteps = [
   {
     icon: MessageCircle,
     step: "01",
     title: "Send Your Enquiry",
-    text: "Contact us by WhatsApp, phone, email or the contact form with your childâ€™s age and preferred start date.",
+    text: "Contact us by WhatsApp, phone, email or the contact form with your child’s age and preferred start date.",
   },
   {
     icon: CalendarCheck,
@@ -50,7 +49,7 @@ const admissionSteps = [
 ];
 
 const requiredInfo = [
-  "Childâ€™s full name and age",
+  "Child’s full name and age",
   "Preferred start date",
   "Parent or guardian contact details",
   "Any learning, health or support needs",
@@ -95,7 +94,7 @@ const faqs = [
   {
     question: "What information should I prepare?",
     answer:
-      "Please prepare your childâ€™s age, preferred start date, parent contact details and any special support information.",
+      "Please prepare your child’s age, preferred start date, parent contact details and any special support information.",
   },
   {
     question: "Is the admissions process parent-friendly?",
@@ -108,39 +107,54 @@ export default function AdmissionsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative px-4 py-7 sm:px-6 sm:py-9 lg:px-8 lg:py-10">
+      <section className="relative px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_26px_85px_rgba(24,53,40,0.12)]">
-            <div className="relative aspect-video w-full overflow-hidden bg-[#183528]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/45 bg-white/75 shadow-[0_26px_85px_rgba(24,53,40,0.12)] backdrop-blur-xl">
+            {/* Mobile/tablet image: full 16:9, no crop, no text covering image */}
+            <div className="relative aspect-video w-full overflow-hidden bg-[#183528] lg:hidden">
               <Image
                 src="/images/Admissions/admissions-hero.webp"
                 alt="Parents visiting Heaven Seeds Academy for admissions in Mauritius"
                 fill
                 priority
+                quality={80}
                 sizes="100vw"
-                className="object-contain object-center lg:object-cover"
+                className="object-contain object-center"
+              />
+            </div>
+
+            {/* Desktop hero image with premium overlay */}
+            <div className="relative hidden aspect-[16/7] w-full overflow-hidden bg-[#183528] lg:block">
+              <Image
+                src="/images/Admissions/admissions-hero.webp"
+                alt="Parents visiting Heaven Seeds Academy for admissions in Mauritius"
+                fill
+                priority
+                quality={80}
+                sizes="100vw"
+                className="object-cover object-center"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#183528]/84 via-[#183528]/42 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#183528]/84 via-[#183528]/40 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#183528]/48 via-transparent to-transparent" />
 
               <div className="absolute inset-0 flex items-center">
-                <div className="max-w-3xl px-5 sm:px-8 lg:px-10">
-                  <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/14 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#f4d77b] backdrop-blur-md sm:text-[11px]">
+                <div className="max-w-3xl px-10">
+                  <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/14 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-[#f4d77b] backdrop-blur-md">
                     <HeartHandshake size={14} />
                     Admissions Open
                   </p>
 
-                  <h1 className="mt-5 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-0.055em] text-white drop-shadow-2xl sm:text-5xl lg:text-6xl">
-                    Begin your childâ€™s journey with confidence.
+                  <h1 className="mt-5 max-w-3xl text-5xl font-extrabold leading-tight tracking-[-0.055em] text-white drop-shadow-2xl xl:text-6xl">
+                    Begin your child’s journey with confidence.
                   </h1>
 
-                  <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/88 sm:text-lg sm:leading-8">
+                  <p className="mt-4 max-w-2xl text-lg font-semibold leading-8 text-white/88">
                     Heaven Seeds Academy welcomes Mauritius families looking for
                     a safe, loving and joyful pre-primary environment.
                   </p>
 
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <div className="mt-7 flex gap-3">
                     <Link
                       href="https://wa.me/23058204613"
                       target="_blank"
@@ -160,6 +174,43 @@ export default function AdmissionsPage() {
                     </Link>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Mobile/tablet text below image */}
+            <div className="p-5 sm:p-7 lg:hidden">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#183528]/10 bg-[#183528]/5 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#7f1d1d]">
+                <HeartHandshake size={14} />
+                Admissions Open
+              </p>
+
+              <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-[-0.055em] text-[#183528] sm:text-4xl">
+                Begin your child’s journey with confidence.
+              </h1>
+
+              <p className="mt-3 text-sm font-semibold leading-7 text-[#426252] sm:text-base">
+                Heaven Seeds Academy welcomes Mauritius families looking for a
+                safe, loving and joyful pre-primary environment.
+              </p>
+
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="https://wa.me/23058204613"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#7f1d1d] px-6 py-3 text-sm font-extrabold !text-white shadow-[0_18px_45px_rgba(127,29,29,0.28)] transition hover:-translate-y-1 hover:bg-[#991b1b]"
+                >
+                  <span className="text-white">WhatsApp Admissions</span>
+                  <ArrowRight size={17} className="text-white" />
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f28c28] px-6 py-3 text-sm font-extrabold !text-white shadow-[0_18px_45px_rgba(242,140,40,0.32)] transition hover:-translate-y-1 hover:bg-[#ff9f3f]"
+                >
+                  <span className="text-white">Contact Us</span>
+                  <MessageCircle size={17} className="text-white" />
+                </Link>
               </div>
             </div>
           </div>
@@ -187,7 +238,7 @@ export default function AdmissionsPage() {
 
               <p className="mt-4 text-sm leading-7 text-[#426252] sm:text-base sm:leading-8">
                 Whether you are enquiring for the first time, booking a visit or
-                preparing your childâ€™s enrollment, Heaven Seeds Academy will
+                preparing your child’s enrollment, Heaven Seeds Academy will
                 guide you with care and clarity.
               </p>
 
@@ -281,7 +332,7 @@ export default function AdmissionsPage() {
 
             <p className="max-w-2xl text-sm leading-7 text-[#426252] sm:text-base lg:ml-auto">
               A clear step-by-step journey from the first parent enquiry to your
-              childâ€™s first day with us.
+              child’s first day with us.
             </p>
           </div>
 

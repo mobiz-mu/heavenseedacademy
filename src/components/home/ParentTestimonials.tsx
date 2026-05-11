@@ -238,6 +238,8 @@ export default function ParentTestimonials() {
                     alt={`${item.name} parent review avatar`}
                     fill
                     sizes="52px"
+                    loading="lazy"
+                    quality={65}
                     className="rounded-full object-cover object-center"
                   />
                 </div>

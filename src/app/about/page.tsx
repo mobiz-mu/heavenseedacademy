@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -16,7 +16,6 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { pageSeo } from "@/lib/seo/site";
 
 export const metadata = createMetadata(pageSeo.about);
-
 
 const values = [
   {
@@ -50,7 +49,7 @@ const process = [
   {
     step: "02",
     title: "Guided Discussion",
-    text: "We learn about your childâ€™s age, needs, routine and preferred start period.",
+    text: "We learn about your child’s age, needs, routine and preferred start period.",
   },
   {
     step: "03",
@@ -68,38 +67,90 @@ export default function AboutPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative px-4 py-7 sm:px-6 sm:py-9 lg:px-8 lg:py-10">
+      <section className="relative px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_26px_85px_rgba(24,53,40,0.12)]">
-            <div className="relative aspect-video w-full overflow-hidden bg-[#183528]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/45 bg-white/70 shadow-[0_26px_85px_rgba(24,53,40,0.12)] backdrop-blur-xl">
+            {/* Mobile image - full 16:9 visible, no crop, no text over image */}
+            <div className="relative aspect-video w-full overflow-hidden bg-[#183528] lg:hidden">
               <Image
                 src="/images/About/about-hero.webp"
                 alt="Heaven Seeds Academy warm pre-primary classroom in Mauritius"
                 fill
                 priority
+                quality={80}
                 sizes="100vw"
-                className="object-contain object-center lg:object-cover"
-           />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#183528]/78 via-[#183528]/34 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#183528]/42 via-transparent to-transparent" />
+                className="object-contain object-center"
+              />
+            </div>
+
+            {/* Desktop hero with overlay */}
+            <div className="relative hidden aspect-[16/7] w-full overflow-hidden bg-[#183528] lg:block">
+              <Image
+                src="/images/About/about-hero.webp"
+                alt="Heaven Seeds Academy warm pre-primary classroom in Mauritius"
+                fill
+                priority
+                quality={80}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-[#183528]/82 via-[#183528]/38 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#183528]/46 via-transparent to-transparent" />
 
               <div className="absolute inset-0 flex items-center">
-                <div className="max-w-3xl px-5 sm:px-8 lg:px-10">
-                  <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/14 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#f4d77b] backdrop-blur-md sm:text-[11px]">
+                <div className="max-w-3xl px-10">
+                  <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/14 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-[#f4d77b] backdrop-blur-md">
                     <Leaf size={14} />
                     About Heaven Seeds Academy
                   </p>
 
-                  <h1 className="mt-5 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-0.055em] text-white drop-shadow-2xl sm:text-5xl lg:text-6xl">
+                  <h1 className="mt-5 max-w-3xl text-5xl font-extrabold leading-tight tracking-[-0.055em] text-white drop-shadow-2xl xl:text-6xl">
                     A loving foundation for early learning in Mauritius.
                   </h1>
 
-                  <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/88 sm:text-lg sm:leading-8">
+                  <p className="mt-4 max-w-2xl text-lg font-semibold leading-8 text-white/88">
                     Heaven Seeds Academy is a nurturing pre-primary environment
                     where children grow with care, confidence, creativity and
                     strong foundations.
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Mobile/tablet text below image */}
+            <div className="p-5 sm:p-7 lg:hidden">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#183528]/10 bg-[#183528]/5 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#7f1d1d]">
+                <Leaf size={14} />
+                About Heaven Seeds Academy
+              </p>
+
+              <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-[-0.055em] text-[#183528] sm:text-4xl">
+                A loving foundation for early learning in Mauritius.
+              </h1>
+
+              <p className="mt-3 text-sm font-semibold leading-7 text-[#426252] sm:text-base">
+                Heaven Seeds Academy is a nurturing pre-primary environment
+                where children grow with care, confidence, creativity and strong
+                foundations.
+              </p>
+
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/admissions"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#7f1d1d] px-6 py-3 text-sm font-extrabold !text-white shadow-[0_18px_45px_rgba(127,29,29,0.28)] transition hover:-translate-y-1 hover:bg-[#991b1b]"
+                >
+                  <span className="text-white">Start Enrollment</span>
+                  <ArrowRight size={17} className="text-white" />
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f28c28] px-6 py-3 text-sm font-extrabold !text-white shadow-[0_18px_45px_rgba(242,140,40,0.32)] transition hover:-translate-y-1 hover:bg-[#ff9f3f]"
+                >
+                  <span className="text-white">Contact Us</span>
+                  <MessageCircle size={17} className="text-white" />
+                </Link>
               </div>
             </div>
           </div>
@@ -134,7 +185,7 @@ export default function AboutPage() {
                 language growth and pre-primary readiness.
               </p>
 
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 hidden flex-col gap-3 sm:flex-row lg:flex">
                 <Link
                   href="/admissions"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#7f1d1d] px-6 py-3 text-sm font-extrabold !text-white shadow-[0_18px_45px_rgba(127,29,29,0.28)] transition hover:-translate-y-1 hover:bg-[#991b1b]"
@@ -229,7 +280,7 @@ export default function AboutPage() {
 
                 <p className="mt-4 text-sm leading-7 text-[#426252] sm:text-base sm:leading-8">
                   Our vision is to be recognised as a parent-trusted academy
-                  where children feel valued, protected and inspired to grow â€”
+                  where children feel valued, protected and inspired to grow —
                   building the foundations they need for school and life.
                 </p>
               </div>
@@ -296,7 +347,7 @@ export default function AboutPage() {
 
                 <p className="mt-2 text-sm leading-6 text-white/76">
                   We will gladly guide you through admissions, school visits and
-                  your childâ€™s first steps with Heaven Seeds Academy.
+                  your child’s first steps with Heaven Seeds Academy.
                 </p>
               </div>
 
